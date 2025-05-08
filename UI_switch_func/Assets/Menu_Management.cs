@@ -10,7 +10,9 @@ public class Menu_Management : MonoBehaviour
         moveButtons = new Menu_Button[transform.childCount];
         for(int i = 0; i < transform.childCount; i++)
         {
-            moveButtons[i] = transform.GetChild(i).GetComponent<Menu_Button>();
+            var childScript = transform.GetChild(i).GetComponent<Menu_Button>();
+            if (childScript == null) continue;
+            moveButtons[i] = childScript;
             moveButtons[i].parentMenuState = menuState;
         }
     }

@@ -15,7 +15,7 @@ public class Menu_Button : MonoBehaviour
         button.onClick.AddListener(() =>
         {
             u.SetMenu(targetMenuState);
-            u.PushMenuStack(u.menuActionDic[parentMenuState]);
+            u.PushMenuStack((int)parentMenuState);
         });
     }
 }

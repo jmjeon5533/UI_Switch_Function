@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
-    public Stack<Action<int>> stackMoveSteps = new Stack<Action<int>>();
+    public Stack<int> stackMoveStepsIndex = new Stack<int>();
     public Dictionary<MenuState, Action<int>> menuActionDic = new Dictionary<MenuState, Action<int>>();
     public enum MenuState
     {
@@ -20,8 +20,8 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
     }
-    public void PushMenuStack(Action<int> action) { stackMoveSteps.Push(action); }
-    public Action<int> PopMenuStack() { return stackMoveSteps.Pop(); }
+    public void PushMenuStack(int action) { stackMoveStepsIndex.Push(action); print(stackMoveStepsIndex.Count); }
+    public int PopMenuStack() { return stackMoveStepsIndex.Count != 0 ? stackMoveStepsIndex.Pop() : -1; }
     void Start()
     {
         InitMenuAction();
